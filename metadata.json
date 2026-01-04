@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Palm Interiors",
+  "description": "Palm Interiors is a full-service interior design and project execution company specializing in end-to-end interior solutions for residential and commercial spaces. From concept to completion, we handle interior design, space planning, construction, and turnkey project management with precision and care.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
