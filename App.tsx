@@ -9,6 +9,7 @@ import TriadSection from './components/TriadSection.tsx';
 import ProcessSection from './components/ProcessSection.tsx';
 import ContactSection from './components/ContactSection.tsx';
 import Footer from './components/Footer.tsx';
+import FloatingConsult from './components/FloatingConsult.tsx';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'gallery' | 'studio' | 'contact'>('home');
@@ -64,6 +65,7 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
       <Footer />
+      <FloatingConsult />
     </div>
   );
 };

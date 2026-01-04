@@ -2,6 +2,10 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const handleConsultationClick = () => {
+    window.dispatchEvent(new CustomEvent('palm-toggle-consult'));
+  };
+
   return (
     <footer className="bg-stone-900 text-stone-400 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +34,12 @@ const Footer: React.FC = () => {
               <li className="hover:text-white transition-colors cursor-pointer">Residential</li>
               <li className="hover:text-white transition-colors cursor-pointer">Commercial</li>
               <li className="hover:text-white transition-colors cursor-pointer">Turnkey Execution</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Consultation</li>
+              <li 
+                onClick={handleConsultationClick}
+                className="hover:text-white transition-colors cursor-pointer text-stone-200"
+              >
+                Consultation
+              </li>
             </ul>
           </div>
 
@@ -47,7 +56,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white text-[10px] uppercase tracking-widest font-bold mb-8 opacity-50">Brief</h4>
             <p className="text-xs mb-6 font-light leading-relaxed">Sign up for our quarterly architectural digest.</p>
-            <form className="relative">
+            <form className="relative" onSubmit={(e) => e.preventDefault()}>
               <input 
                 type="email" 
                 placeholder="Email Address" 

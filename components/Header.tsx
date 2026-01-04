@@ -17,6 +17,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, activeView }) => {
 
   const isLight = activeView === 'home' && !scrolled;
 
+  const handleConsultClick = () => {
+    window.dispatchEvent(new CustomEvent('palm-toggle-consult'));
+  };
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/80 backdrop-blur-md py-4' : 'py-10'}`}>
       <div className="max-w-[1600px] mx-auto px-8 flex justify-between items-center">
@@ -45,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, activeView }) => {
         </nav>
 
         <button 
-           onClick={() => onNavigate('contact')}
+           onClick={handleConsultClick}
            className={`text-[9px] uppercase tracking-[0.4em] font-bold px-8 py-3 rounded-full transition-all border ${
              isLight ? 'border-white/30 text-white hover:bg-white hover:text-stone-900' : 'border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white'
            }`}
