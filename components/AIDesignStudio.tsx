@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { getDesignAdvice, generateRoomConcept } from '../services/geminiService';
-import { ChatMessage, GeneratedConcept } from '../types';
+import { getDesignAdvice, generateRoomConcept } from '../services/geminiService.ts';
+import { ChatMessage, GeneratedConcept } from '../types.ts';
 
 const AIDesignStudio: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'advisor' | 'generator'>('advisor');

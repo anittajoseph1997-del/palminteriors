@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProjectGallery from './components/ProjectGallery';
-import AIDesignStudio from './components/AIDesignStudio';
-import AboutSnapshot from './components/AboutSnapshot';
-import TriadSection from './components/TriadSection';
-import ProcessSection from './components/ProcessSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import Header from './components/Header.tsx';
+import Hero from './components/Hero.tsx';
+import ProjectGallery from './components/ProjectGallery.tsx';
+import AIDesignStudio from './components/AIDesignStudio.tsx';
+import AboutSnapshot from './components/AboutSnapshot.tsx';
+import TriadSection from './components/TriadSection.tsx';
+import ProcessSection from './components/ProcessSection.tsx';
+import ContactSection from './components/ContactSection.tsx';
+import Footer from './components/Footer.tsx';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'gallery' | 'studio' | 'contact'>('home');
