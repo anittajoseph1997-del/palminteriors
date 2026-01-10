@@ -1,7 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Safe access to API KEY to prevent crash if process.env is undefined in browser
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || "";
+  } catch (e) {
+    return "";
+  }
+};
+
 export const getDesignAdvice = async (prompt: string, history: { role: string; parts: { text: string }[] }[]) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   const chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
@@ -14,7 +23,7 @@ export const getDesignAdvice = async (prompt: string, history: { role: string; p
 };
 
 export const generateRoomConcept = async (prompt: string): Promise<string | undefined> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-flash-image',
     contents: {
