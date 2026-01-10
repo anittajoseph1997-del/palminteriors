@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const SERVICES = [
@@ -29,23 +28,23 @@ const ServicesSection: React.FC = () => {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <span className="text-xs uppercase tracking-[0.3em] font-bold text-stone-400 mb-4 block">Our Expertise</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-stone-900 serif">Design, Build & Manufacture</h2>
+          <span className="text-sm uppercase tracking-[0.5em] font-black text-stone-950 mb-4 block">Our Expertise</span>
+          <h2 className="text-6xl md:text-8xl font-black text-stone-950 serif tracking-tighter leading-none">Design, Build & Manufacture</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 border border-stone-200 rounded-3xl overflow-hidden shadow-2xl shadow-stone-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-950 border-4 border-stone-950 rounded-[40px] overflow-hidden shadow-2xl">
           {SERVICES.map((service, idx) => (
-            <div key={idx} className="bg-white p-10 hover:bg-stone-50 transition-colors cursor-default group">
-              <div className="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-stone-900 group-hover:text-white transition-all">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={service.icon}></path>
+            <div key={idx} className="bg-white p-12 hover:bg-stone-50 transition-colors cursor-default group">
+              <div className="w-16 h-16 bg-stone-950 text-white rounded-2xl flex items-center justify-center mb-10 shadow-xl group-hover:scale-110 transition-transform">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={service.icon}></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-stone-900 mb-4">{service.title}</h3>
-              <p className="text-sm text-stone-500 leading-relaxed">{service.description}</p>
+              <h3 className="text-3xl font-black text-stone-950 mb-6 serif tracking-tight leading-none">{service.title}</h3>
+              <p className="text-lg text-stone-950 leading-relaxed font-black">{service.description}</p>
               {service.title === 'Factory Manufacturing' && (
-                <div className="mt-4 inline-block px-3 py-1 bg-stone-100 rounded text-[10px] font-bold uppercase tracking-widest text-stone-400">
-                  In-House Unit
+                <div className="mt-8 inline-block px-6 py-2.5 bg-stone-950 rounded-xl text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-lg">
+                  Kochi Factory Unit
                 </div>
               )}
             </div>

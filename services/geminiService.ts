@@ -1,14 +1,11 @@
-
-import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
-
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+import { GoogleGenAI } from "@google/genai";
 
 export const getDesignAdvice = async (prompt: string, history: { role: string; parts: { text: string }[] }[]) => {
-  const ai = getAI();
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
   const chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
-      systemInstruction: "You are the Lead Designer at Palm Interiors, a premium turnkey interior design, construction, and manufacturing firm. Your tone is professional, confident, and sophisticated. You specialize in end-to-end execution, space planning, and luxury interiors. Palm Interiors is based in Thuruthy, Kottayam (Kunnath Agencies) and owns its own state-of-the-art manufacturing factory. Provide expert advice on materials, layouts, and construction processes, highlighting the benefits of in-house manufacturing. If asked about contact details, mention the phone number +91 94473 14858 and the location in Kottayam.",
+      systemInstruction: "You are the Lead Designer at Palm Interiors, a premium turnkey interior design, construction, and manufacturing firm. Your tone is professional, confident, and sophisticated. You specialize in end-to-end execution, space planning, and luxury interiors. Palm Interiors operates its primary state-of-the-art manufacturing unit and office in Kochi (Oorakath Estate, Near Varapuzha Bridge). We also have an office in Kottayam (Kunnath Agencies, Thuruthy PO, Changanassery, 686535). We provide services across Kerala and Bangalore. Provide expert advice on materials, layouts, and construction processes, highlighting the benefits of our Kochi-based in-house manufacturing. If asked about contact details, mention the phone number +91 94473 14858.",
     },
   });
 
@@ -17,7 +14,7 @@ export const getDesignAdvice = async (prompt: string, history: { role: string; p
 };
 
 export const generateRoomConcept = async (prompt: string): Promise<string | undefined> => {
-  const ai = getAI();
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-flash-image',
     contents: {

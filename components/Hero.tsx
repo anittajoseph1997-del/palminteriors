@@ -5,6 +5,7 @@ interface HeroProps {
   onStart: () => void;
 }
 
+// Fixed: Correctly typed the component props with HeroProps
 const Hero: React.FC<HeroProps> = ({ onStart }) => {
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -20,9 +21,11 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl">
-        <p className="text-white text-[10px] uppercase tracking-[0.8em] font-light mb-8 opacity-80 fade-in">
-          Established 2012 • Kottayam
-        </p>
+        <div className="flex items-center justify-center space-x-4 mb-8 fade-in">
+          <span className="text-white text-[9px] uppercase tracking-[0.4em] px-3 py-1 border border-white/20 rounded-full">Kerala</span>
+          <span className="w-1.5 h-1.5 bg-white/40 rounded-full"></span>
+          <span className="text-white text-[9px] uppercase tracking-[0.4em] px-3 py-1 border border-white/20 rounded-full">Bangalore</span>
+        </div>
         <h1 className="text-white text-6xl md:text-9xl font-light leading-none mb-12 serif tracking-tight">
           Design <span className="italic">is</span> Detail.
         </h1>
@@ -36,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           </button>
           <div className="h-px w-12 bg-white/30 hidden md:block"></div>
           <button className="group relative text-white text-[10px] uppercase tracking-[0.5em] font-bold">
-            View 100+ Projects
+            View Regional Portfolio
             <span className="absolute -bottom-2 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full"></span>
           </button>
         </div>
