@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 interface HeaderProps {
-  onNavigate: (view: 'home' | 'gallery' | 'studio' | 'contact') => void;
+  onNavigate: (view: 'home' | 'gallery' | 'studio' | 'contact' | 'transformations' | 'founder') => void;
   activeView: string;
 }
 
@@ -32,8 +32,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, activeView }) => {
           <span className={`text-[8px] uppercase tracking-[0.8em] font-medium transition-colors ${isLight ? 'text-white/60' : 'text-stone-400'}`}>Interiors</span>
         </div>
         
-        <nav className="hidden lg:flex space-x-16">
-          {['home', 'gallery', 'studio', 'contact'].map((id) => (
+        <nav className="hidden lg:flex space-x-12">
+          {['home', 'gallery', 'transformations', 'founder', 'studio', 'contact'].map((id) => (
             <button
               key={id}
               onClick={() => onNavigate(id as any)}

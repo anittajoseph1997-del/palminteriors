@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
@@ -9,8 +10,13 @@ import ProcessSection from './components/ProcessSection.tsx';
 import ContactSection from './components/ContactSection.tsx';
 import Footer from './components/Footer.tsx';
 import FloatingConsult from './components/FloatingConsult.tsx';
+import StickyWhatsApp from './components/StickyWhatsApp.tsx';
+import StickyCall from './components/StickyCall.tsx';
+import TransformationGallery from './components/TransformationGallery.tsx';
+import Testimonials from './components/Testimonials.tsx';
+import AboutFounder from './components/AboutFounder.tsx';
 
-type View = 'home' | 'gallery' | 'studio' | 'contact' | 'about' | 'philosophy';
+type View = 'home' | 'gallery' | 'studio' | 'contact' | 'about' | 'philosophy' | 'transformations' | 'founder';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
@@ -30,7 +36,10 @@ const App: React.FC = () => {
             <Hero onStart={() => setCurrentView('studio')} />
             <TriadSection />
             <AboutSnapshot />
+            <TransformationGallery />
+            <AboutFounder />
             <ProjectGallery />
+            <Testimonials />
             <ProcessSection />
             <section className="bg-stone-900 py-48 relative overflow-hidden">
               <div className="max-w-4xl mx-auto px-4 text-center">
@@ -50,6 +59,10 @@ const App: React.FC = () => {
         );
       case 'gallery':
         return <div className="pt-20"><ProjectGallery /></div>;
+      case 'transformations':
+        return <div className="pt-20"><TransformationGallery /></div>;
+      case 'founder':
+        return <div className="pt-20"><AboutFounder /></div>;
       case 'studio':
         return <div className="pt-10 min-h-screen bg-stone-50"><AIDesignStudio /></div>;
       case 'contact':
@@ -98,10 +111,10 @@ const App: React.FC = () => {
                 </p>
               </div>
               <button 
-                onClick={() => setCurrentView('home')}
+                onClick={() => setCurrentView('founder')}
                 className="mt-20 border-b border-stone-900 pb-2 text-xs uppercase tracking-[0.4em] font-bold"
               >
-                Back to Home
+                Learn About Our Founder
               </button>
             </div>
           </div>
@@ -156,6 +169,8 @@ const App: React.FC = () => {
       </main>
       <Footer onNavigate={setCurrentView} />
       <FloatingConsult />
+      <StickyWhatsApp />
+      <StickyCall />
     </div>
   );
 };
