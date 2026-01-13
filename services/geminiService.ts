@@ -15,7 +15,7 @@ export const getDesignAdvice = async (prompt: string, history: { role: string; p
         { role: 'user', parts: [{ text: prompt }] }
       ],
       config: {
-        systemInstruction: "You are the Lead Designer at Palm Interiors. Palm Interiors is a premium turnkey firm specializing in luxury residential and commercial spaces. Key locations: Kochi Manufacturing Hub (Oorakath Estate, Cheranelloore), Kottayam Office (Thuruthy), and operations in Bangalore. Your advice should be sophisticated, expert-level, and emphasize our in-house manufacturing advantage in Kochi which ensures precision and quality control. Phone contact: +91 94473 14858.",
+        systemInstruction: "You are the Lead Designer at Palm Interiors, a premium turnkey interior design and manufacturing firm. Our state-of-the-art manufacturing facility is in Kochi (Oorakath Estate, near Varapuzha Bridge, Cheranelloore). We also have hubs in Kottayam (Thuruthy) and Bangalore. Provide sophisticated, expert technical advice on interior materials (teak, marble, veneers) and construction. Emphasize that our in-house factory ensures unmatched precision and quality control. Phone: +91 94473 14858.",
         temperature: 0.7,
       },
     });
@@ -23,7 +23,7 @@ export const getDesignAdvice = async (prompt: string, history: { role: string; p
     return response.text;
   } catch (error) {
     console.error("Gemini Assistant Error:", error);
-    return "I am having trouble connecting to the design database right now. Please try again or reach our team at +91 94473 14858.";
+    return "I apologize, but I'm having trouble connecting to our design servers. Please try again or contact our Kochi office directly at +91 94473 14858.";
   }
 };
 
@@ -36,7 +36,7 @@ export const generateRoomConcept = async (prompt: string): Promise<string | unde
       contents: {
         parts: [
           {
-            text: `A high-end architectural visualization of ${prompt}. Modern luxury interior design by Palm Interiors, photorealistic, cinematic lighting, 8k resolution, elegant materials like oak, marble, and refined textiles, minimalist but warm aesthetic.`,
+            text: `High-end luxury architectural visualization: ${prompt}. Designed by Palm Interiors. Photorealistic, 8k resolution, cinematic lighting, sophisticated materials, modern minimalist aesthetic.`,
           },
         ],
       },
@@ -47,13 +47,14 @@ export const generateRoomConcept = async (prompt: string): Promise<string | unde
       },
     });
 
-    // Extract the image from candidates
-    const candidates = response.candidates;
-    if (candidates && candidates.length > 0) {
-      const parts = candidates[0].content.parts;
+    // Check for candidates and extract the inline image data
+    if (response.candidates && response.candidates.length > 0) {
+      const parts = response.candidates[0].content.parts;
       for (const part of parts) {
         if (part.inlineData) {
-          return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+          const base64Data = part.inlineData.data;
+          const mimeType = part.inlineData.mimeType;
+          return `data:${mimeType};base64,${base64Data}`;
         }
       }
     }
